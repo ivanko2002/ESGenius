@@ -89,7 +89,6 @@ a:focus {
 
 .header_section .header_top {
   padding: 15px 0;
-  background-color: #000000;
 }
 
 .header_section .header_top .contact_nav {
@@ -101,9 +100,6 @@ a:focus {
           justify-content: space-between;
 }
 
-.header_section .header_top .contact_nav a {
-  color: #ffffff;
-}
 
 .header_section .header_top .contact_nav a i {
   color: #ff8a1d;
@@ -273,11 +269,13 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   background-size: cover;
   background-position: bottom;
+  background-color: #d1e3ff; 
 }
 
 .slider_section .row {
@@ -321,10 +319,6 @@ a:focus {
 .slider_section .detail-box a:hover {
   background-color: transparent;
   color: #ff8a1d;
-}
-
-.slider_section .img-box img {
-  width: 100%;
 }
 
 .feature_section {
@@ -837,4 +831,54 @@ a:focus {
 }
 
 /* end footer section*/
-/*# sourceMappingURL=style.css.map */
+
+#icon-box{
+  display:flex; 
+  width: 200px; 
+  height: 200ox; 
+}
+
+#icon-img{
+  height:100%; 
+  width:100%; 
+}
+
+.navbar-nav{
+  display: flex; 
+  flex-direction: row;
+}
+
+.nav-item{
+  padding: 10px; 
+}
+.nav-link{
+  color: black;
+}
+
+.navbar{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d1e3ff;
+  padding: 15px; 
+}
+
+.container-fluid{
+  padding: 0px; 
+}
+
+#project-title{
+  font-size: 2.5rem; 
+  font-weight: bold; 
+  color: #0355cc;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+.project-details{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d1e3ff;
+}
