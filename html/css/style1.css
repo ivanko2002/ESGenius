@@ -6,7 +6,10 @@ body{
 }
 
 section{
+    display: flex; 
+    flex-direction: column;
     padding: 50px; 
+    align-items: center;
 }
 
 .nav-bar{
@@ -68,4 +71,18 @@ section{
 
 .team-intro-type{
     font-weight: bold;
+}
+
+
+table {
+    width: fit-content; /* Set the table width */
+    border-collapse: collapse; /* Collapse borders */
+}
+th, td {
+    border: 1px solid #000; /* Border for cells */
+    padding: 8px; /* Padding inside cells */
+    text-align: left; /* Align text to the left */
+}
+th {
+    background-color: #f2f2f2; /* Background color for header */
 }
