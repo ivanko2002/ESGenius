@@ -831,6 +831,7 @@ a:focus {
 }
 
 /* end footer section*/
+<<<<<<< HEAD
 
 #icon-box{
   display:flex; 
@@ -881,4 +882,10 @@ a:focus {
   justify-content: center;
   align-items: center;
   background-color: #d1e3ff;
+=======
+/*# sourceMappingURL=style.css.map */
+
+#navbar{
+  justify-content: end;
+>>>>>>> 19a9e6e60691bf503400a3ea36192a36c4a6650c
 }
