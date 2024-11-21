@@ -3,7 +3,6 @@ __pycache__
 
 # log files
 *.log.*
-*.log
 
 # data files
 src/data/*

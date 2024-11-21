@@ -14,6 +14,10 @@ class WebScraper:
         self.logger = logging.getLogger(__name__)
         src_folder = os.path.dirname(os.path.abspath(__file__))
         self.data_folder = os.path.join(os.path.dirname(src_folder), 'data')
+        if not os.path.exists(self.data_folder):
+            # create folder to store all download files
+            os.makedirs(self.data_folder)
+
         self.download_path = download_path if download_path else self.data_folder
         self.driver = None
         self.config_folder = config_folder
@@ -83,7 +87,7 @@ class WebScraper:
             data = json.load(file)
         cik_list = [entry['CIK'].zfill(10) for entry in data]
 
-        for i in range(len(cik_list)):
+        for i in range(1):
             url = f"https://www.sec.gov/edgar/search/#/category=custom&entityName={cik_list[i]}&forms=10-K"
             self.scrape_files(url, cik_list[i])
 
