@@ -83,7 +83,7 @@ class WebScraper:
             file.write(soup.text)
 
     def run(self):
-        with open(os.path.join(self.config_folder, 'name_to_cik.json'), 'r') as file:
+        with open(os.path.join(self.config_folder, 'name_to_cik.json'), 'r', 'UTF-8') as file:
             data = json.load(file)
         cik_list = [entry['CIK'].zfill(10) for entry in data]
 
