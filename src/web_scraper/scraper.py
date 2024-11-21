@@ -12,7 +12,9 @@ sys.path.insert(1, '..\src')
 class WebScraper:
     def __init__(self, config_folder, download_path=None):
         self.logger = logging.getLogger(__name__)
-        self.download_path = download_path if download_path else os.path.join(Path.home(), "Downloads")
+        src_folder = os.path.dirname(os.path.abspath(__file__))
+        self.data_folder = os.path.join(os.path.dirname(src_folder), 'data')
+        self.download_path = download_path if download_path else self.data_folder
         self.driver = None
         self.config_folder = config_folder
 
@@ -27,7 +29,19 @@ class WebScraper:
 
     def scrape_files(self, url, cik):
         try:
+            self.download_path = os.path.join(self.data_folder, cik)
+            if not os.path.exists(self.download_path):
+                # create folder to store the download files for each cik
+                os.makedirs(self.download_path)
+            
+
+        except Exception as e:
+            self.logger.error(f"An error occurred: {str(e)}", exc_info=True)
+            self.logger.error(f"Traceback: {traceback.format_exc()}")
+
+        try:
             self.logger.info(f"Start scraping for {cik}")
+            self.logger.info(f"Saving at {self.download_path}")
             self.setup_driver()
             self.driver.get(url)
             body_html = self.driver.find_element(By.ID, 'results-grid').get_attribute('innerHTML')
@@ -69,8 +83,7 @@ class WebScraper:
             data = json.load(file)
         cik_list = [entry['CIK'].zfill(10) for entry in data]
 
-        #for i in range(len(cik_list)):
-        for i in range(10):
+        for i in range(len(cik_list)):
             url = f"https://www.sec.gov/edgar/search/#/category=custom&entityName={cik_list[i]}&forms=10-K"
             self.scrape_files(url, cik_list[i])
 
