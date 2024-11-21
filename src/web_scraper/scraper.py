@@ -87,7 +87,7 @@ class WebScraper:
             data = json.load(file)
         cik_list = [entry['CIK'].zfill(10) for entry in data]
 
-        for i in range(1):
+        for i in range(len(cik_list)):
             url = f"https://www.sec.gov/edgar/search/#/category=custom&entityName={cik_list[i]}&forms=10-K"
             self.scrape_files(url, cik_list[i])
 
