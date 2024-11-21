@@ -1,0 +1,5 @@
+11-21 13:17:58.484|__main__|INFO|Scraper Main starts
+11-21 13:17:58.485|web_scraper.scraper|INFO|Start scraping for 0001090872
+11-21 13:17:58.485|web_scraper.scraper|INFO|Saving at /Users/ivan/Desktop/ESGenius/src/data/0001090872
+11-21 13:18:06.000|web_scraper.scraper|INFO|WebDriver closed
+11-21 13:18:06.001|web_scraper.scraper|INFO|End scraping for 0001090872
