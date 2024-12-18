@@ -2,7 +2,10 @@
 __pycache__
 
 # log files
+logs/*
 *.log.*
 
 # data files
 src/data/*
+
+test.ipynb

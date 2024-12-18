@@ -56,12 +56,12 @@ class WebScraper:
             self.logger.info(f"{len(data_adsh_list)} files founded")
             for accession_number in data_adsh_list:
                 index_key = accession_number.split('-')[0]
-                accession_number_without_zeros = index_key.lstrip('0')
+                #accession_number_without_zeros = index_key.lstrip('0')
                 accession_number_without_dashes = accession_number.replace('-', '')
-                data_file_url = f"https://www.sec.gov/Archives/edgar/data/{accession_number_without_zeros}/{accession_number_without_dashes}/{accession_number}.txt"
+                data_file_url = f"https://www.sec.gov/Archives/edgar/data/{cik.lstrip('0')}/{accession_number_without_dashes}/{accession_number}.txt"
                 # start downloading the file
                 self.download_files(data_file_url)
-                self.logger.info(f"Downloaded: {accession_number_without_zeros}/{accession_number_without_dashes}/{accession_number}.txt")
+                self.logger.info(f"Downloaded: {cik}/{accession_number_without_dashes}/{accession_number}.txt")
 
         except Exception as e:
             self.logger.error(f"An error occurred: {str(e)}", exc_info=True)
@@ -86,10 +86,14 @@ class WebScraper:
         with open(os.path.join(self.config_folder, 'name_to_cik.json'), 'r', encoding="utf-8") as file:
             data = json.load(file)
         cik_list = [entry['CIK'].zfill(10) for entry in data]
-
+        
         for i in range(len(cik_list)):
             url = f"https://www.sec.gov/edgar/search/#/category=custom&entityName={cik_list[i]}&forms=10-K"
             self.scrape_files(url, cik_list[i])
+        
+
+
+
 
         
 
